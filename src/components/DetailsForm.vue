@@ -1,13 +1,13 @@
 <template lang="pug">
   .content
     button.back-button(type='button')
-      img.icon(src='../assets/back-arrow-icon.svg' alt='Volver al listado' @click='goToList' id='back-arrow')
+      img.icon(src='../assets/back-arrow-icon.svg' @click='goToList' id='back-arrow')
       span.text(for='back-arrow')
         | Volver
     h1.title
       | {{ title }}
     .data-container
-      img.image(v-if='data.image' :src='data.image' :alt='`Portada de ${data.name}`')
+      img.image(v-if='data.image' :src='data.image')
       h2.name
         | {{ data.name }}
       .stars-container
@@ -25,9 +25,9 @@
       p.text
         | {{ data.plot }}
       p.text
-        | Para más info, podés ingresar a
+        | Para más info, podés ingresar
         a.link(:href='data.text')
-          | artículo en Wikipedia
+          | aquí
 </template>
 
 <script>
@@ -64,7 +64,6 @@ export default {
   padding: 30px;
 
   .back-button {
-    cursor: pointer;
     display: flex;
 
     .icon {
@@ -116,9 +115,11 @@ export default {
     .link {
       font-size: 1.2rem;
       line-height: 2rem;
+      text-align: justify;
     }
 
     .link {
+      color: $black;
       margin-left: 5px;
     }
 

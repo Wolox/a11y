@@ -26,9 +26,10 @@ export default {
 
 <style lang="scss" scoped>
 @import 'src/scss/commons/miscellaneous';
+@import 'src/scss/variables/colors';
 
 .detail-container {
   @extend .main-container;
-  background: url('../assets/green-plain.jpg') no-repeat center center;
+  background: $gray url('../assets/green-plain.jpg') no-repeat center center;
 }
 </style>

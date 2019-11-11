@@ -1,11 +1,11 @@
 <template lang="pug">
-nav.navbar(aria-label='Navegación principal')
-  ul.menu-bar(aria-label='Navegación principal')
+nav.navbar
+  ul.menu-bar
     li.menu-item-li(v-for='item in navbarItems' :key='item.id')
       router-link.menu-item(:to='{ name: item.to }' exact-active-class='active-route')
         span.menu-item-label
           | {{ item.label }}
-        img.menu-item-icon(:src='item.img' :alt='item.alt')
+        img.menu-item-icon(:src='item.img')
 </template>
 
 <script>
@@ -24,10 +24,6 @@ export default {
 @import 'src/scss/variables/colors';
 @import 'src/scss/commons/miscellaneous';
 
-li > a:focus {
-  border: 1px dotted orange;
-}
-
 .navbar {
   background: $white;
   position: fixed;
@@ -38,14 +34,13 @@ li > a:focus {
     list-style: none;
 
     .menu-item-li {
-      cursor: pointer;
-
       &:not(:last-child) {
         margin-right: 10px;
       }
 
       .menu-item {
         align-items: center;
+        cursor: default;
         display: flex;
         padding: 0 5px;
 

@@ -4,14 +4,14 @@
       h1.title
         | Anime list
       .filter-container
-        input.filter-input(v-model='filterValue' aria-label='Buscar')
-        img.icon(src='../assets/filter-icon.svg' alt='Buscar')
+        input.filter-input(v-model='filterValue')
+        img.icon(src='../assets/filter-icon.svg')
       h2.list-title
         | Mi lista
       .list-container
         template(v-if='filteredList.length > 0')
           router-link.card(v-for='anime in filteredList' :key='anime.id' @click='goToDetail(anime.id)' :to='{ name: routes.detail, params: { id: anime.id } }')
-            img.image(:src='anime.image || defaultIcon' alt='')
+            img.image(:src='anime.image || defaultIcon')
             .description
               h3.card-title
                 | {{ anime.name }}
@@ -19,7 +19,7 @@
                 | {{ anime.reviewStars }} / 10
         template(v-else)
           .empty-container
-            img.image(src='../assets/add-to-list.svg' alt='Lista vacía')
+            img.image(src='../assets/add-to-list.svg')
             h3.empty-title
               | ¿Qué esperas?
             span.empty-subtitle
@@ -104,25 +104,13 @@ export default {
       .card {
         border: 1px solid $light-gray;
         border-radius: 10px;
+        cursor: default;
         display: flex;
         overflow: hidden;
-        transition: box-shadow 0.3s;
         width: 100%;
-
-        &:focus {
-          outline: 1px solid $orange;
-        }
 
         &:not(:last-child) {
           margin-bottom: 10px;
-        }
-
-        &:hover {
-          box-shadow: 0 4px 8px 0 rgba(12, 0, 51, 0.1);
-
-          .card-title {
-            color: $blue;
-          }
         }
 
         .image {

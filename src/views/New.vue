@@ -4,15 +4,15 @@
       h1.title
         | Nuevo anime
       .name-field
-        label.label(for='new-name')
+        span.label(for='new-name')
           | Título
         input.input(v-model='name' id='new-name' name='new-name')
         transition(name='fade')
-          span.error-msg(v-show='nameError' role='log' aria-live='polite')
+          span.error-msg(v-show='nameError' role='log')
             | Este campo es obligatorio
       .selects-container
         .review-field
-          label.label(for='new-review')
+          span.label(for='new-review')
             | Review
           select.review-select(v-model='reviewStars' id='new-review' name='new-review')
             option(disabled :value='null')
@@ -20,10 +20,10 @@
             option(v-for='review in reviewValues' :key='review.id' :value='review.value')
               | {{ review.value }}
           transition(name='fade')
-            span.error-msg(v-show='reviewStarsError' role='log' aria-live='polite')
+            span.error-msg(v-show='reviewStarsError' role='log')
               | El valor debe estar entre 1 y 10
         .status-field
-          label.label(for='new-status')
+          span.label(for='new-status')
             | Estado
           select.status-select(v-model='status' id='new-status' name='new-status')
             option(disabled value='')
@@ -31,18 +31,18 @@
             option(v-for='status in seenStatus' :key='status.id' :value='status.value')
               | {{ status.optionLabel }}
           transition(name='fade')
-            span.error-msg(v-show='statusError' role='log' aria-live='polite')
+            span.error-msg(v-show='statusError' role='log')
               | Este campo es obligatorio
       .plot-field
-        label.label(for='new-plot')
+        span.label(for='new-plot')
           | Descripción
         textarea.plot-input(v-model='plot' id='new-plot' name='new-plot')
       .link-field
-        label.label(for='new-link')
+        span.label(for='new-link')
           | Link
         input.input(v-model='link' id='new-link' name='new-link')
       transition(name='fade')
-        .success-field(v-if='showSuccess' aria-live='polite')
+        .success-field(v-if='showSuccess')
           span.success-text
             | El animé fue agregado con éxito.
       button.main-button(type='submit')
@@ -127,7 +127,7 @@ export default {
 
 .new-container {
   @extend .main-container;
-  background: url('../assets/green-plain.jpg') $dark-gray no-repeat center center;
+  background: $translucent no-repeat center center;
 
   .new-form {
     background: $white;
